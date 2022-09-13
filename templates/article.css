@@ -1,0 +1,213 @@
+html {
+    width: 100vw;
+    min-height: 100vh;
+    background: #545e69;
+    padding: 0 2vw;
+  }
+  body {
+    max-width: 80%;
+    margin: 12vmin auto 4em auto;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.9);
+    background: linear-gradient(to bottom,rgba(255,255,255,0.7) 0,white 35em);
+    padding: 5vw;
+    font-family: "Merriweather", serif;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 0 5vw rgba(0,0,0,0.25);
+  }
+  * {
+    box-sizing: border-box;
+  }
+  strong {
+    color: #b30059;
+  }
+  .posttitle{
+    text-align: center;
+    font-size:4em;
+    line-height: 1;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    order: 2;
+    color: #333;
+    margin: .5em 0;
+  }
+  .posttitle~ * {
+    order: 3;
+  }
+  .posttitle + p {
+    order: 1;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .8em;
+    letter-spacing: .1em;
+  }
+  .posttitle + .article p strong {
+    font-weight: 400;
+  }
+  .posttitle+ .article p em {
+    font-style: normal;
+  }
+  .artitle{
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 100;
+    font-style: italic;
+    font-size: calc(18px + 1.5vw);
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 1.5em;
+  }
+  .artitle:before,
+  .artitle:after {
+    content: '';
+    border-bottom: 1px solid rgba(179,0,89,0.3);
+    flex-grow: .5;
+    height: .75em;
+  }
+  .artitle:before {
+    margin-right: .5em;
+    transform-origin: 100% 100%;
+    transform: scaleX(.5);
+  }
+  .artitle:after {
+    margin-left: .5em;
+    transform-origin: 0 100%;
+    transform: scaleX(.5);
+  }
+  .artitle + p {
+    height: auto;
+    width: 100vw;
+    max-height: 70vh;
+    overflow: hidden;
+    margin-top: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+  .artitle + .article p img {
+    width: 100%;
+    margin-top: -10%;
+  }
+  .artitle + .article p:after {
+    content: '';
+    font-size: 4em;
+    height: 50%;
+    width: 100%;
+    background: linear-gradient(to bottom,rgba(93,158,226,0) 0%,rgba(64, 69, 75, 0.6) 40%,rgba(59, 70, 81, 0.85) 60%,#555f6a 90%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .artitle + .article p + .article p {
+    font-size: 1.3em;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    margin: 1em 0 2em 0;
+    padding: .5em 2em;
+    font-size: 1.4em;
+    border-top: 1px solid rgba(179,0,89,0.3);
+    border-bottom: 1px solid rgba(179,0,89,0.3);
+    padding: 1.5em;
+    position: relative;
+  }
+  blockquote > :first-child:before {
+    content: open-quote;
+  }
+  blockquote > :last-child {
+    margin-bottom: 0;
+  }
+  blockquote > :last-child:after {
+    content: close-quote;
+  }
+  blockquote:before,
+  blockquote:after {
+    content: '❧';
+    color: #b30059;
+    position: absolute;
+    top: -0.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+    background: white;
+    width: 2em;
+    text-align: center;
+  }
+  blockquote:after {
+    top: auto;
+    bottom: -0.5em;
+  }
+  .article h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7em;
+    color: #19528d;
+  }
+  .article p,
+  .article ul {
+    margin: 0 0 1em 0;
+    line-height: 1.7;
+  }
+  .article ul {
+    list-style-type: none;
+  }
+  .article ul > li:before {
+    content: '❀';
+    color: #b30059;
+    margin-left: -1.5em;
+    width: 1.5em;
+    display: inline-block;
+    text-align: center;
+  }
+  .article h3:last-of-type {
+    margin: 1em 0 0 0;
+    padding: 1em;
+    background: #e7f1fb;
+    border-radius: 4px 4px 0 0;
+  }
+  .article h3:last-of-type ~ * {
+    background: #e7f1fb;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0 1.5em 1.5em 1.5em;
+  }
+  .article h3:last-of-type ~ *:last-child {
+    border-radius: 0 0 4px 4px;
+  }
+  .article h3:last-of-type ~ ul {
+    padding-left: 5em;
+  }
+  @media screen and (min-width: 1300px) {
+    .article body {
+      padding: 80px;
+    }
+  }
+  @media screen and (min-width: 800px) {
+    .article h1 {
+      font-size: 5em;
+    }
+    .artitle {
+      font-size: 2em;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .artitle + .article p +.article p {
+      font-size: 1.2em;
+    }
+    blockquote {
+      font-size: 1.2em;
+    }
+  }
+  .article hr {
+    border-top: 3px double #8c8b8b;
+}
+
+.fontt{
+    font-style: italic;
+}

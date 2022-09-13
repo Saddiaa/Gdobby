@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog Article</title>
+  <style>html {
+    width: 100vw;
+    min-height: 100vh;
+    background: #545e69;
+    padding: 0 2vw;
+  }
+  body {
+    max-width: 80%;
+    margin: 12vmin auto 4em auto;
+    display: flex;
+    flex-direction: column;
+    background: rgba(255,255,255,0.9);
+    background: linear-gradient(to bottom,rgba(255,255,255,0.7) 0,white 35em);
+    padding: 5vw;
+    font-family: "Merriweather", serif;
+    color: #333;
+    border-radius: 8px;
+    box-shadow: 0 0 5vw rgba(0,0,0,0.25);
+  }
+  * {
+    box-sizing: border-box;
+  }
+  strong {
+    color: #b30059;
+  }
+  .article h1 {
+    text-align: center;
+    font-size:4em;
+    line-height: 1;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    order: 2;
+    margin: .5em 0;
+  }
+  .article h1 ~ * {
+    order: 3;
+  }
+  .article h1 + p {
+    order: 1;
+    text-align: center;
+    text-transform: uppercase;
+    font-size: .8em;
+    letter-spacing: .1em;
+  }
+  .article h1 + .article p strong {
+    font-weight: 400;
+  }
+  .article h1 + .article p em {
+    font-style: normal;
+  }
+  .article h2 {
+    text-align: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 100;
+    font-style: italic;
+    font-size: calc(18px + 1.5vw);
+    display: flex;
+    margin-top: 0;
+    margin-bottom: 1.5em;
+  }
+  .article h2:before,
+  .article h2:after {
+    content: '';
+    border-bottom: 1px solid rgba(179,0,89,0.3);
+    flex-grow: .5;
+    height: .75em;
+  }
+  .article h2:before {
+    margin-right: .5em;
+    transform-origin: 100% 100%;
+    transform: scaleX(.5);
+  }
+  .article h2:after {
+    margin-left: .5em;
+    transform-origin: 0 100%;
+    transform: scaleX(.5);
+  }
+  .article h2 + p {
+    height: auto;
+    width: 100vw;
+    max-height: 70vh;
+    overflow: hidden;
+    margin-top: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: -1;
+  }
+  .article h2 + .article p img {
+    width: 100%;
+    margin-top: -10%;
+  }
+  .article h2 + .article p:after {
+    content: '';
+    font-size: 4em;
+    height: 50%;
+    width: 100%;
+    background: linear-gradient(to bottom,rgba(93,158,226,0) 0%,rgba(64, 69, 75, 0.6) 40%,rgba(59, 70, 81, 0.85) 60%,#555f6a 90%);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+  }
+  .article h2 + .article p + .article p {
+    font-size: 1.3em;
+    line-height: 1.5;
+    font-weight: 300;
+  }
+  blockquote {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+    margin: 1em 0 2em 0;
+    padding: .5em 2em;
+    font-size: 1.4em;
+    border-top: 1px solid rgba(179,0,89,0.3);
+    border-bottom: 1px solid rgba(179,0,89,0.3);
+    padding: 1.5em;
+    position: relative;
+  }
+  blockquote > :first-child:before {
+    content: open-quote;
+  }
+  blockquote > :last-child {
+    margin-bottom: 0;
+  }
+  blockquote > :last-child:after {
+    content: close-quote;
+  }
+  blockquote:before,
+  blockquote:after {
+    content: '❧';
+    color: #b30059;
+    position: absolute;
+    top: -0.5em;
+    left: 50%;
+    transform: translateX(-50%);
+    line-height: 1;
+    background: white;
+    width: 2em;
+    text-align: center;
+  }
+  blockquote:after {
+    top: auto;
+    bottom: -0.5em;
+  }
+  .article h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.7em;
+    color: #19528d;
+  }
+  .article p,
+  .article ul {
+    margin: 0 0 1em 0;
+    line-height: 1.7;
+  }
+  .article ul {
+    list-style-type: none;
+  }
+  .article ul > li:before {
+    content: '❀';
+    color: #b30059;
+    margin-left: -1.5em;
+    width: 1.5em;
+    display: inline-block;
+    text-align: center;
+  }
+  .article h3:last-of-type {
+    margin: 1em 0 0 0;
+    padding: 1em;
+    background: #e7f1fb;
+    border-radius: 4px 4px 0 0;
+  }
+  .article h3:last-of-type ~ * {
+    background: #e7f1fb;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 0 1.5em 1.5em 1.5em;
+  }
+  .article h3:last-of-type ~ *:last-child {
+    border-radius: 0 0 4px 4px;
+  }
+  .article h3:last-of-type ~ ul {
+    padding-left: 5em;
+  }
+  @media screen and (min-width: 1300px) {
+    .article body {
+      padding: 80px;
+    }
+  }
+  @media screen and (min-width: 800px) {
+    .article h1 {
+      font-size: 5em;
+    }
+    .article h2 {
+      font-size: 2em;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .article h2 + .article p +.article p {
+      font-size: 1.2em;
+    }
+    blockquote {
+      font-size: 1.2em;
+    }
+  }
+  .article hr {
+    border-top: 3px double #8c8b8b;
+}
+
+  </style>
+</head>
+<body>
+  <div class="article">
+  <h1 id="a-tremendous-post-title">Writings</h1>
+<p><strong><em>September 5th, 2022</em> Last Updated</strong></p>
+<h2 id="an-inspiring-subtitle">Hasan Raheem</h2>
+<p><img src="https://images.pexels.com/photos/378271/pexels-photo-378271.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cherry blossoms"></p>
+<p>Last year, I came across the multi-hyphenate, Hasan Raheem &#8211; the artist through a small concert that recently went viral over the internet for being organised during Covid times. That video was as random as his entry into the music scene - there's nothing, absolutely nothing planned about his arrival, but one look at his numbers and the number of tracks he throws every now then is enough to know that he is here to stay. 
+</p>
+<img src='/gdobby/static/hasan.webp' style="max-height: 100vh;" alt="">
+<!-- <blockquote>
+<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus mollis fringilla dolor, a sollicitudin turpis posuere elementum.</p>
+</blockquote> -->
+<p>
+  Well, clearly it wasn&#39;t the best time to gather a crowd, however (secretly I&#39;m glad he did) because now I&#39;m hooked to each and every song of Hasan Raheem.Hasan still getting accustomed to screaming fans and over-pouring affection.
+ 
+</p>
+<p> Was this the first time I heard Hasan Raheem drown me in an abyss created by his effortlessly strained, but vibing voice? No, I realised I was already a fan of a snippet of “Aisay Kaisay” that I had once heard on Instagram, and look at me now, I&#39;m writing this to why you should be going gaga over this talented boy from Gilgit-Baltistan, who by the way is a very cool doctor in the making!(Dr. He Is!!!)
+  
+</p>
+<p>His take on soul, rnb and indie music in a pool that&#39;s brimming with pop and pop rock music Pakistani artists, Hasan Raheem is like a breath of fresh air (and kinda somewhere in the zone of the likes of Shamoon Ismail, no?)  I love them both.</p>
+ <p>
+  <em> Aisay Kaisay</em> is the very first song that introduced me to Hasan Raheem and of the major reasons why it&#39;s still on repeat. (8 Aisay Kaisay repeats on my clg route)"Oh, Aisay Kaisay is that one track that is closest to me," he comments. "It was shot in one take - the first take. I just really like the whole feel to it.”I too like it alot.From the subtle shifts to the sounds and the way he plays around in that pink hoodie kinda ropes me in:)
+   
+  
+</p><p><em>Have something to add to the story? Share it in the contact form.
+</em></p>
+<hr />
+<h2 id="an-inspiring-subtitle">You may hate a thing that is good for you</h2>
+<p><img src="https://images.pexels.com/photos/378271/pexels-photo-378271.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cherry blossoms"></p>
+ <p>Having that void in your heart can be painful. The one that doesn’t quite feel right—like something is missing, but you just can’t seem to put your finger on what; it is borderline painful. I felt it too. Days pass by, you don’t like to see or be around family or friends, you can’t focus at work, you don’t quite feel like eating anything. Depression? Anxiety? No, no; it is a disease and needs to be treated, but not a tangible disease, no—it is a spiritual one. </p>
+  <img src='/gdobby/static/quran.webp' style="max-height: 44vh"  alt="">
+  <blockquote>I was convinced by the ayah that says: “You may dislike something although it is good for you, or like something, although it is bad for you” &#8211; Qur&#39;an (2:216)</blockquote>
+  <p>The only thing that was steady during certain awful time was my prayers; even after all those feelings of loss, I kept up with my prayers. I didn&#39;t let that go because deep down I knew the tough days would pass with the help of Allah (SWT).But the time awaited.I knew He would guide me—He is Al Hadiy and Ar Rashid. I knew He loved people who were committed to Him. “God loves those who are steadfast” &#8211; Quran (3:146). Deep down, I knew Allah (SWT) tests those whom He loves, and clearly He was testing me because He loves me. The thing I hated, that pain that sorrow and darkness, led me to be closer to him; those dark days brought me the greatest gift. 
+  </p>
+ 
+<p><em>Have something to add to the story? Share it in the contact form.
+  </em></p>
+
+  <hr />
+  <h2 id="an-inspiring-subtitle"> It’s 2014, Crocs Are Cool Again!
+  </h2>
+  <p><img src="https://images.pexels.com/photos/378271/pexels-photo-378271.jpeg?auto=compress&cs=tinysrgb&w=600" alt="cherry blossoms"></p>
+   <p> 
+    Crocs are cool? How the hell did that happen?
+    This past year, in the midst of the pandemic and an economic downturn that hurt nearly every industry, the brand everyone loves to hate saw their strongest revenue in history.  </p>
+    <img src='/gdobby/static/crocs.avif' style="max-height: 80vh;"  alt="">
+
+    <p>After their early-aughts heyday, Crocs suffered. In 2008, with “mountains of shoes and no one to buy them,” Crocs suffered a loss of $185 million (Washington Post). The novelty of the rubber clogs wore off, and Crocs slipped from our radar. Until recently.
+    </p>
+    <p>The Crocs Effect is being felt even outside the company's comfy foam walls. Over the past couple of years, labels like Gucci experimented with a Crocs look alike. The new Yeezy Foam Runner, with its foam construction and Swiss-cheese design, appears to be heavily indebted to the Croc. Imagine sticking a Jibbitz shaped like one of Kanye’s SHERP ATVs into one of those perforations. Perfection!
+    </p>
+    <p> I think Crocs is really the platonic ideal of a pandemic shoe: they slip on and off easily and, for despite the misgivings anyone might have about how they look, are undeniably comfortable as hell.
+    </p>
+  <p><em>Have something to add to the story? Share it in the contact form.
+    </em></p>
+
+    
+<h3 id="all-the-good-stuff-is-in-these-paragraphs">Hey!</h3>
+
+<p>Idk whether you have read those peices or not! But just asking THEY ARE NOT REALLY MINE! My brain stopped processing after I told him to start writing. It went blank and led to 2-week delay in this site which is not how I intended it to work Trust me!</p>
+
+</div>
+<!-- <h3 id="some-key-takeaways">Some Key Takeaways</h3>
+<p>After reading this tremendous blog article, these are the salient points:</p>
+<ul>
+<li>A bullet point</li>
+<li>Another one<ol>
+<li>Sub point one</li>
+<li>Sub point two</li>
+</ol>
+</li>
+<li>Another one</li>
+<li>How about four?</li>
+</ul>
+<p>In a pellentesque eros. Morbi elementum venenatis est quis cursus. Nunc vitae mi maximus, volutpat enim nec, ultricies libero. Donec pharetra dui arcu, vel sagittis dolor scelerisque nec!</p> -->
+
+</body>
+</html>

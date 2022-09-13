@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Homemade+Apple&display=swap"
+      rel="stylesheet"
+    />
+ 
+<link href="https://fonts.googleapis.com/css2?family=Uchen&display=swap" rel="stylesheet">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css"
+      integrity="sha512-1sCRPdkRXhBV2PBLUdRb4tMg1w2YPf37qatUFeS7zlBy7jJI8Lf4VHwWfZZfpXtYSLy85pkm9GaYVYMfw5BC1A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+
+.contact-box{
+	max-width: 100%;
+	display: grid;
+    border-radius: 10px;
+	grid-template-columns: repeat(2, 1fr);
+	justify-content: center;
+	align-items: center;
+	text-align: center;
+	background-color: #b5ccd1;
+    transition: 0.5s;
+}
+
+.contact-box:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.3);
+}
+
+
+
+.left{
+	background: url("some_image") no-repeat center; /*TODO: add some image*/
+	background-size: cover;
+	height: 100%;
+    border-radius: 10px;
+
+}
+
+.right{
+	padding: 25px 40px;
+}
+
+h2{
+	position: relative;
+	padding: 0 0 10px;
+	margin-bottom: 10px;
+}
+
+h2:after{
+	content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%);
+    height: 4px;
+    width: 50px;
+    border-radius: 2px;
+    background-color: #25a888;
+}
+
+.field{
+	width: 100%;
+	border: 2px solid rgba(0, 0, 0, 0);
+    border-radius: 3px;
+	outline: none;
+	background-color: rgba(230, 230, 230, 0.835);
+	padding: 0.5rem 1rem;
+	font-size: 1.1rem;
+	margin-bottom: 22px;
+	transition: .3s;
+}
+
+.field:hover{
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+textarea{
+	min-height: 150px;
+}
+
+.btn{
+	width: 40%;
+	padding: 0.5rem 1rem;
+	background-color: #25a888;
+    border-radius: 3px;
+	color: #fff;
+	font-size: 1.1rem;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	transition: .3s;
+}
+
+.btn:hover{
+    box-shadow: 0 0 20px 0px rgba(0,0,0,0.15);
+}
+
+.field:focus{
+    background-color: #fff;
+}
+
+@media screen and (max-width: 768px){
+	.contact-box{
+		grid-template-columns: 1fr;
+	}
+	.left{
+		height: 200px;
+	}
+}
+      /* * {
+        font-family: "Homemade Apple", cursive;
+        margin: 0px;
+        padding: 0px;
+     
+        box-sizing: border-box;
+      }
+      header {
+        background-color: #ecccb2;
+        color: #ac7088;
+      }
+      .todo_title {
+        display: inline;
+        font-size: 38px;
+        margin: 2px 26px;
+        padding: 8px;
+        /* float: left; */
+        /* transform: 0.5ss ease-in;
+      }
+      .todo_title:hover {
+        text-decoration: underline;
+      }
+      .welc {
+        display: inline;
+        /* float: right; */
+        /* position: absolute;
+        right: 20px;
+        font-size: 24px;
+        margin: 5px 26px;
+        padding: 8px;
+      }
+      .icon,.thing,.submit{
+        display: inline;
+        margin: 1px 26px;
+        padding: 7px;
+        align-items: center;
+      }
+      .todo{
+        font-family: 'Uchen', serif;
+        display: block;
+        background-color: #F5E8C7;
+        width: 100%;
+        height: 44px;
+      }
+      .icon{
+        margin: 5px;
+        font-size: 20px;
+      }
+      .thing{   font-size: 24px;
+        font-family: 'Uchen', serif;
+        text-transform: capitalize;
+      }
+      .submit{
+        position: absolute;
+        right: 10px;
+        font-size: 14px;
+        font-family:  'Uchen', serif;
+        padding: 2px 40px;
+        margin: 4px 10px;
+      }
+      form{
+        display: inline;
+      }
+      input[type=text] {
+  width: 230px;
+  margin-left:10px ;
+  border-radius: 3px;
+  padding: 4px;
+  font-size: 18px;
+  -webkit-transition: width 0.4s ease-in-out;
+  transition: width 0.4s ease-in-out;
+}
+
+/* When the input field gets focus, change its width to 100%
+input[type=text]:focus {
+  width: 50%;
+}  */
+    </style>
+  </head>
+  <body>
+    <section class="section" id="contact">
+      <form action="" name="contactForm" method="POST" onsubmit="return validateForm()">
+          {% csrf_token %}
+          <div class="contact-box">
+              <div class="left"></div>
+              <div class="right">
+                  <h2>Contact me</h2>
+                  <input type="text" class="field" placeholder="Your Name" name="name">
+                  <input type="text" class="field" placeholder="Your Email" name="email">
+                  <input type="text" class="field" placeholder="Phone" name="phone">
+                  <textarea placeholder="Message" class="field" name="message"></textarea>
+                  <button class="btn">Send</button>
+              </div>
+          </div>
+      </form>
+  </section>
+    
+
+    <!-- <header>
+      <div class="todo_title">Todo List</div>
+      <form method= 'POST' action="/">
+        {% csrf_token %}
+<input type="text"       name="title" style="font-family: 'Uchen', serif;" placeholder="Type Todo here...">
+<input type="text"       name="list" style="font-family: 'Uchen', serif;" placeholder="Type your List"> 
+</form>
+      <div class="welc">Welcome Back!!</div>
+    </header>
+    <section>
+        {% for Todo in Todos %}
+      <ul class="list">
+       
+        <li class="todo">
+          <div>
+            <i class="fa-solid fa-star icon"></i>
+            <div class="thing">{{Todo.title}}</div>
+            <button type="submit" class="submit">Done!</button>
+          </div>
+        </li>
+
+      </ul>        {% endfor %}
+    </section> -->
+
+    <script>
+      function validateForm(){
+          let name = document.forms['contactForm']['name'].value;
+          let email = document.forms['contactForm']['email'].value;
+          let phone = document.forms['contactForm']['phone'].value;
+          let message = document.forms['contactForm']['message'].value;
+    
+          if (name == '' || hasNumber(name)){
+              alert('Name must be filled out and must only contain letters');
+              return false;
+          } else if (email == '' && phone == ''){
+              alert('Email or phone must be filled out');
+              return false;
+          } else if (!(email.includes('@'))){
+              alert('Email does not seem to be valid');
+              return false;
+          }else if (isNaN(phone)){
+              alert('Phone number seems to contain letters');
+              return false;
+          } else if (message == ''){
+              alert('Message must be filled out');
+              return false;
+          } else {
+              // confirm or cancel
+              return confirm('Do you really want to sent the message?')
+          }
+      }
+    
+      function hasNumber(myString) {
+          return /\d/.test(myString);
+      }
+    </script>
+  </body>
+</html>
